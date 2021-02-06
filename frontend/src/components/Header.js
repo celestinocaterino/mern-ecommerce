@@ -4,7 +4,7 @@ const Header = () => {
     return (
         <header>
             <div className="d-none d-lg-block d-xl-block">
-                <Navbar className="bd-navbar text-light navbar-dark" expand="lg">
+                <Navbar className="bd-navbar text-light navbar-dark fixed-top" expand="lg">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Brand href="#home">E-commerce</Navbar.Brand>
                     <Navbar.Collapse id="basic-navbar-nav">

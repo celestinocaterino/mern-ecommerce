@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  },
+  "name": "mern-ecommerce",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CelestinoCaterino/my-MERN-ecommerce.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CelestinoCaterino/my-MERN-ecommerce/issues"
+  },
+  "homepage": "https://github.com/CelestinoCaterino/my-MERN-ecommerce#readme",
+  "description": ""
+}
