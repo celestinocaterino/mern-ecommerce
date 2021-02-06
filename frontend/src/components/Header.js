@@ -9,7 +9,7 @@ const Header = () => {
                     <Navbar.Brand href="#home">E-commerce</Navbar.Brand>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto mr-5">
-                            <Nav.Link href="#home"><i class="fas fa-shopping-cart"></i></Nav.Link>
+                            <Nav.Link href="#home">Cart <i className="fas fa-shopping-cart"></i></Nav.Link>
                             <Nav.Link href="#link">Sign in <i className="fas fa-sign-in-alt ml-1"></i></Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
