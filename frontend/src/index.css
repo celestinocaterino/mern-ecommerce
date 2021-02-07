@@ -3,5 +3,21 @@ main{
     margin-top: 60px;
 }
 .bd-navbar {
-    background-color: #563d7c;
+    background-color: #46508C;
+}
+a>strong{
+    color: black;
+}
+.img-responsive {
+    width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.btn-bg-color-custom{
+    background-color: #46508C!important;
+}
+
+.btn-bg-color-custom:hover{
+    background-color: #676e99 !important;
 }

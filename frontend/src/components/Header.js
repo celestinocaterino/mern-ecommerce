@@ -1,23 +1,33 @@
 import React from 'react'
 import {Navbar, Nav, Container} from 'react-bootstrap';
+import {BrowserView,} from "react-device-detect";
+import { LinkContainer} from 'react-router-bootstrap' 
+
 const Header = () => {
     return (
         <header>
-            <div className="d-none d-lg-block d-xl-block">
+            <BrowserView>
                 <Navbar className="bd-navbar text-light navbar-dark fixed-top" expand="lg">
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Brand href="#home">E-commerce</Navbar.Brand>
+                    <LinkContainer to="/">
+                    <Navbar.Brand>E-commerce</Navbar.Brand>
+                    
+                    </LinkContainer>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto mr-5">
-                            <Nav.Link href="#home">Cart <i className="fas fa-shopping-cart"></i></Nav.Link>
-                            <Nav.Link href="#link">Sign in <i className="fas fa-sign-in-alt ml-1"></i></Nav.Link>
+                        <LinkContainer to="cart">
+
+                            <Nav.Link>Cart <i className="fas fa-shopping-cart"></i></Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="signin">
+                            <Nav.Link>Sign in <i className="fas fa-sign-in-alt ml-1"></i></Nav.Link>
+
+                        </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
-            </div>
-            <div className="d-lg-none d-xl-none">
-                header mobile
-            </div>
+            </BrowserView>
+            
         </header>
     )
 }
