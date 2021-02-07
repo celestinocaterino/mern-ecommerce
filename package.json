@@ -1,13 +1,17 @@
 {
+  "type": "module",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongoose": "^5.11.15",
     "nodemon": "^2.0.7"
   },
   "name": "mern-ecommerce",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/index"
+    "start": "nodemon backend/index"
   },
   "repository": {
     "type": "git",
