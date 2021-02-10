@@ -1,4 +1,3 @@
-import React from 'react'
 export const Rating = ({value, text, color}) => {
     return (
         <div className="rating">
@@ -31,7 +30,6 @@ export const Rating = ({value, text, color}) => {
         </div>
     )
 }
-
 Rating.defaultProps={
     color: '#46508C'
 }

@@ -1,16 +1,20 @@
-import React, {useState, useEffect} from 'react';
-import {Row, Container, Col} from 'react-bootstrap';
-import { Product } from '../components/Product';
-import axios from 'axios';
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import {Row, Container, Col} from 'react-bootstrap'
+import { Product } from '../components/Product'
+import {productList} from './../actions/productActions'
+
 const HomeScreen = () => {
-    const [products,setProducts]=useState([]);
+
+    const dispatch=useDispatch()
+    const productsList=useSelector((state)=>state.productList)
+    const {products}=productsList
     useEffect(() => {
-        const fetchProducts=async ()=>{
-            const {data} = await axios.get('http://localhost:500/api/products/');
-            setProducts(data);
-        }
-        fetchProducts();
-    },[])
+        dispatch(productList())
+
+    },[dispatch])
+
+
     return (
         <>
             <Container>
@@ -28,5 +32,4 @@ const HomeScreen = () => {
         </>
     )
 }
-
 export default HomeScreen

@@ -5,6 +5,7 @@ import Product from './models/Product.js'
 import User from './models/User.js'
 import Order from './models/Order.js'
 import connectDb from './db.js'
+
 dotenv.config()
 connectDb()
 const destroyData= async()=>{
@@ -30,7 +31,6 @@ const importData=async ()=>{
     })
     await Product.insertMany(addProducts)
 }
-
 destroyData()
 if(process.argv[2] == '-d'){
     destroyData()

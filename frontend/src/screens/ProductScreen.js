@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import { Rating } from '../components/Rating'
-import axios from 'axios';
+import axios from 'axios'
+import { motion } from "framer-motion"
 
 const ProductScreen = ({match}) => {
     const [product,setProduct]=useState([]);
@@ -16,7 +17,7 @@ const ProductScreen = ({match}) => {
     return (
         <div>
             <Container>
-            <Link className="btn btn-light mb-3 mt-3 ml-3" to='/'>Go back</Link>
+            <Link to='/'><motion.button whileHover={{ scale: 1.03 }} className="btn btn-light mb-3 mt-3 ml-3">Go back</motion.button></Link>
 
             <Row>
 
@@ -67,5 +68,4 @@ const ProductScreen = ({match}) => {
         </div>
     )
 }
-
 export default  ProductScreen;

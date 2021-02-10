@@ -1,4 +1,3 @@
-import React from 'react'
 import {Navbar, Nav, Container} from 'react-bootstrap';
 import {BrowserView,} from "react-device-detect";
 import { LinkContainer} from 'react-router-bootstrap' 
@@ -31,6 +30,5 @@ const Header = () => {
         </header>
     )
 }
-
 export default Header
 //rafce
