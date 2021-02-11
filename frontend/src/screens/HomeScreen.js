@@ -8,17 +8,18 @@ const HomeScreen = () => {
 
     const dispatch=useDispatch()
     const productsList=useSelector((state)=>state.productList)
-    const {products}=productsList
+    const {loading, error, products}=productsList
     useEffect(() => {
         dispatch(productList())
 
     },[dispatch])
-
+    
 
     return (
         <>
-            <Container>
             <h1>Latest products</h1>
+            {loading ? <h2>Loading...</h2> : error ?<h3>{error}</h3> :
+            <Container>
                 <Row>
                     {
                         products.map((product)=>
@@ -28,7 +29,8 @@ const HomeScreen = () => {
                         )
                     }
                 </Row>
-            </Container>
+            </Container>}
+            
         </>
     )
 }
