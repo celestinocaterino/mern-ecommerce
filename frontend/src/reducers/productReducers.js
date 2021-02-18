@@ -1,4 +1,4 @@
-const productReducer=(state={products:[]},action)=>{
+export const productReducer=(state={products:[]},action)=>{
     switch(action.type){
         case 'PRODUCT_LIST_REQUEST': 
             return {loading:true, products:[]}
@@ -10,4 +10,18 @@ const productReducer=(state={products:[]},action)=>{
             return state
     }
 }
-export default productReducer
+
+
+export const productDetailReducer=(state={product:{}},action)=>{
+    switch(action.type){
+        case 'PRODUCT_REQUEST': 
+            return {loading:true, ...state}
+        case 'PRODUCT_SUCCESS':
+            return {loading: false, product:action.payload}
+        case 'PRODUCT_FAIL':
+            return {loading: false, error:action.payload}
+        default:
+            return state
+    }
+}
+ 

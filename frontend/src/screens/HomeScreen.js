@@ -5,16 +5,18 @@ import { Product } from '../components/Product'
 import {productList} from './../actions/productActions'
 
 const HomeScreen = () => {
-
     const dispatch=useDispatch()
-    const productsList=useSelector((state)=>state.productList)
-    const {loading, error, products}=productsList
+
+    
     useEffect(() => {
+
         dispatch(productList())
 
-    },[dispatch])
-    
 
+    },[dispatch])
+
+    const productsList=useSelector((state)=>state.productList)
+    const {loading, error, products}=productsList
     return (
         <>
             <h1>Latest products</h1>
