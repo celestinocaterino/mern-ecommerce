@@ -1,36 +1,43 @@
-import axios from 'axios'
+import axios from 'axios';
+import config from './../config.js';
+
 export const productList= () => async (dispatch) => {
     try{
         dispatch({
             type: 'PRODUCT_LIST_REQUEST'
-        })
-        const {data} =await axios.get('http://localhost:500/api/products')
+        });
+
+        const {data} =await axios.get(`${config.API_URL}/api/products`);
+
         dispatch({
             type: 'PRODUCT_LIST_SUCCESS',
             payload: data
-        })
+        });
     }catch(error){
         dispatch({
             type: 'PRODUCT_LIST_FAIL',
             payload: error.response && error.response.data.message
-        })
+        });
     }
 }
 
 export const productDetail= (productId) => async (dispatch) => {
     try{
         dispatch({
-            type: 'PRODUCT_REQUEST'
-        })
-        const {data} =await axios.get('http://localhost:500/api/products/'+productId);
+            type: 'PRODUCT_DETAIL_REQUEST'
+        });
+
+        const {data} =await axios.get(`${config.API_URL}/api/products/${productId}`);
+
         dispatch({
-            type: 'PRODUCT_SUCCESS',
+            type: 'PRODUCT_DETAIL_SUCCESS',
             payload: data
-        })
+        });
+
     }catch(error){
         dispatch({
-            type: 'PRODUCT_FAIL',
+            type: 'PRODUCT_DETAIL_FAIL',
             payload: error.response && error.response.data.message
-        })
+        });
     }
 }
