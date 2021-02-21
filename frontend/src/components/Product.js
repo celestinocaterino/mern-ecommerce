@@ -1,6 +1,6 @@
-import {Card} from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { Rating } from '../components/Rating';
-import {Link} from 'react-router-dom' ;
+import { Link } from 'react-router-dom' ;
 import { motion } from "framer-motion";
 
 export const Product = ({product}) => {

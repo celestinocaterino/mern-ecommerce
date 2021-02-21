@@ -1,20 +1,27 @@
-import React, {useEffect, useState} from 'react';
-import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Container, Row, Col, Card, Button, Form, ListGroup } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { Rating } from '../components/Rating';
 import { motion } from "framer-motion";
-import {useDispatch, useSelector} from 'react-redux';
-import {productDetail} from './../actions/productActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { productDetail } from './../actions/productActions';
+import FormImpl from 'react-bootstrap/esm/Form';
 
-const ProductScreen = ({match}) => {
+const ProductScreen = ({history, match}) => {
     const dispatch=useDispatch();
-    const productDetail = useSelector(state => state.productDetailReducer);
-    const [counter, setCounter] = useState(1);
-    const {product,loading} = productDetail;
+    const getProductDetail = useSelector(state => state.productDetailReducer);
+    const {product,loading} = getProductDetail;
 
     useEffect(() => {
         dispatch(productDetail(match.params.id));
     },[match,dispatch]);
+
+
+    const [quantity, setQuantity]=useState(0);
+
+    const addToCart=()=>{
+        history.push(`/cart/${match.params.id}&quantity=${quantity}`);
+    }
 
     return (
             <Container>
@@ -49,18 +56,34 @@ const ProductScreen = ({match}) => {
                                             <Card.Text as="div">
                                                 <Container>
                                                     <Row>
-                                                        <Col lg={3}>
-                                                            <Button className="btn-block btn-bg-color-custom">-</Button>
+                                                        <Col>
+                                                        {product.countInStock > 0  ?
+                                                            <ListGroup.Item>
+                                                                <Row>
+                                                                    <Col>
+                                                                    Quantity
+                                                                    </Col>
+                                                                    <Col>
+                                                                    <Form.Control as='select' value={quantity} onChange={(e)=>setQuantity(e.target.value)}>
+                                                                        {[...Array(product.countInStock).keys()].map(key=>(
+                                                                            <option value={key+1}>{key+1}</option>
+                                                                        )
+
+                                                                        )}
+                                                                    </Form.Control>
+                                                                    </Col>
+                                                                </Row>
+
+                                                            </ListGroup.Item>
+                                                    
+                                                        :
+                                                            null
+                                                        }
                                                         </Col>
-                                                        <Col lg={6}>
-                                                            <Form.Control type="text" value={counter} className="mb-2" />
-                                                        </Col>
-                                                        <Col lg={3}>
-                                                            <Button className="btn-block btn-bg-color-custom">+</Button>                                
-                                                        </Col>
+                                                        
                                                     </Row>
                                                 </Container>
-                                                <Button className="btn-block btn-bg-color-custom">Add to cart</Button>
+                                                <Button onClick={addToCart} className="btn-block btn-bg-color-custom">Add to cart</Button>
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>

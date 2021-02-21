@@ -1,5 +1,5 @@
-import {Navbar, Nav} from 'react-bootstrap';
-import {BrowserView,} from "react-device-detect";
+import { Navbar, Nav } from 'react-bootstrap';
+import { BrowserView } from "react-device-detect";
 import { LinkContainer} from 'react-router-bootstrap';
 
 const Header = () => {
