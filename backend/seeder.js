@@ -1,13 +1,14 @@
-import dotenv from 'dotenv'
-import products from './data/products.js'
-import users from './data/users.js'
-import Product from './models/Product.js'
-import User from './models/User.js'
-import Order from './models/Order.js'
-import connectDb from './db.js'
+import dotenv from 'dotenv';
+import products from './data/products.js';
+import users from './data/users.js';
+import Product from './models/Product.js';
+import User from './models/User.js';
+import Order from './models/Order.js';
+import connectDb from './db.js';
 
-dotenv.config()
-connectDb()
+dotenv.config();
+connectDb();
+
 const destroyData= async()=>{
     try{
         await User.deleteMany()
@@ -19,22 +20,23 @@ const destroyData= async()=>{
     }catch(error){
 
     }
-}
+};
+
 const importData=async ()=>{
-    const createdUsers=await User.insertMany(users)
-    const adminUser=createdUsers[0]._id
+    const createdUsers=await User.insertMany(users);
+    const adminUser=createdUsers[0]._id;
     const addProducts= products.map((product)=>{
         return {
             ...product,
             user: adminUser
-        }
+        };
     })
-    await Product.insertMany(addProducts)
-}
-destroyData()
+    await Product.insertMany(addProducts);
+};
+destroyData();
 if(process.argv[2] == '-d'){
-    destroyData()
+    destroyData();
 }else{
-    importData()
+    importData();
 }
 

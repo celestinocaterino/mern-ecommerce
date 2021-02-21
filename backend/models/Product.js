@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
 const reviewsSchema=mongoose.Schema({
     
@@ -69,6 +69,6 @@ const productSchema=mongoose.Schema({
    
 },{
     timestamps:true
-})
-const Product=mongoose.model('Product', productSchema)
-export default Product
+});
+const Product=mongoose.model('Product', productSchema);
+export default Product;

@@ -17,7 +17,7 @@ const ProductScreen = ({history, match}) => {
     },[match,dispatch]);
 
 
-    const [quantity, setQuantity]=useState(0);
+    const [quantity, setQuantity]=useState(1);
 
     const addToCart=()=>{
         history.push(`/cart/${match.params.id}&quantity=${quantity}`);
