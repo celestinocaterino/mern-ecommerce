@@ -8,7 +8,7 @@ import { cartReducer } from './reducers/cartReducer';
 const reducer=combineReducers({
     productList: productReducer,
     productDetailReducer: productDetailReducer,
-    cartReducer:cartReducer
+    cart: cartReducer
 });
 
 const initialState={};
