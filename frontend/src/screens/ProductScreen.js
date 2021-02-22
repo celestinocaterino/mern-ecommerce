@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button, Form, ListGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Rating } from '../components/Rating';
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from 'react-redux';
 import { productDetail } from './../actions/productActions';
-import FormImpl from 'react-bootstrap/esm/Form';
 
 const ProductScreen = ({history, match}) => {
     const dispatch=useDispatch();
