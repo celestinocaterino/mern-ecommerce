@@ -19,7 +19,7 @@ const ProductScreen = ({history, match}) => {
     const [quantity, setQuantity]=useState(1);
 
     const addToCart=()=>{
-        history.push(`/cart/${match.params.id}&quantity=${quantity}`);
+        history.push(`/cart/${match.params.id}?quantity=${quantity}`);
     }
 
     return (
@@ -53,7 +53,7 @@ const ProductScreen = ({history, match}) => {
                                             <p>In stock: {product.countInStock ? 'In stock' : 'Out of stock'}</p>
                                             <hr/>
                                             <Card.Text as="div">
-                                                <Container>
+                                                <Container className="mb-2">
                                                     <Row>
                                                         <Col>
                                                         {product.countInStock > 0  ?

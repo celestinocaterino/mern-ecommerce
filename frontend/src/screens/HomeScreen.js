@@ -16,9 +16,10 @@ const HomeScreen = () => {
 
     return (
         <>
-            <h1>Latest products</h1>
-            {loading ? <h2>Loading...</h2> : error ?<h3>{error}</h3> :
             <Container>
+                            <h1>Latest products</h1>
+                            {loading ? <h2>Loading...</h2> : error ?<h3>{error}</h3> :
+
                 <Row>
                     {
                         products.map((product)=>
@@ -27,8 +28,8 @@ const HomeScreen = () => {
                         </Col>
                         )
                     }
-                </Row>
-            </Container>}
+                </Row>}
+            </Container>
             
         </>
     )

@@ -21,3 +21,15 @@ a>strong{
 .btn-bg-color-custom:hover{
     background-color: #676e99 !important;
 }
+
+.cart-basket {
+    font-size: .6rem;
+    position: absolute;
+    top: -6px;
+    right: -5px;
+    width: 15px;
+    height: 15px;
+    color: #fff;
+    background-color: #418deb;
+    border-radius: 50%;
+  }

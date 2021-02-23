@@ -1,4 +1,4 @@
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Dropdown } from 'react-bootstrap';
 import { BrowserView } from "react-device-detect";
 import { LinkContainer} from 'react-router-bootstrap';
 
@@ -13,11 +13,16 @@ const Header = () => {
                         </LinkContainer>
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto mr-5">
-                            <LinkContainer to="cart">
-                                <Nav.Link to="/cart">Cart <i className="fas fa-shopping-cart"></i></Nav.Link>
+                            <LinkContainer to="/cart">
+                                <Nav.Link className="position-relative d-inline-flex"><i className="fas fa-shopping-cart"></i>
+                                <span class="cart-basket d-flex align-items-center justify-content-center">
+            0
+          </span>
+                                </Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="signin">
-                                <Nav.Link>Sign in <i className="fas fa-sign-in-alt ml-1"></i></Nav.Link>
+                            <LinkContainer to="/login">
+                                <Nav.Link className="d-inline-flex"><i class="fas fa-user"></i>
+                                </Nav.Link>
                             </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>
