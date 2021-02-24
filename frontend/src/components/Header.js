@@ -13,17 +13,29 @@ const Header = () => {
                         </LinkContainer>
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto mr-5">
-                            <LinkContainer to="/cart">
-                                <Nav.Link className="position-relative d-inline-flex"><i className="fas fa-shopping-cart"></i>
-                                <span class="cart-basket d-flex align-items-center justify-content-center">
-            0
-          </span>
-                                </Nav.Link>
-                            </LinkContainer>
-                            <LinkContainer to="/login">
-                                <Nav.Link className="d-inline-flex"><i class="fas fa-user"></i>
-                                </Nav.Link>
-                            </LinkContainer>
+                                <div className="d-none d-lg-block">
+                                    <LinkContainer to="/cart">
+                                        <Nav.Link className="position-relative d-inline-flex"><i className="fas fa-shopping-cart"></i>
+                                            <span class="cart-basket d-flex align-items-center justify-content-center">0</span>
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                    <LinkContainer to="/login">
+                                        <Nav.Link className="d-inline-flex"><i className="fas fa-user"></i>
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                </div>
+
+                                <div className="d-block d-lg-none">
+                                    <LinkContainer to="/cart">
+                                        <Nav.Link>Cart <i className="fas fa-shopping-cart"></i>
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                    <LinkContainer to="/login">
+                                        <Nav.Link>Login <i className="fas fa-user"></i>
+                                        </Nav.Link>
+                                    </LinkContainer>
+                                </div>
+                            
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>

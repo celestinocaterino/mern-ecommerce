@@ -16,10 +16,10 @@ const LoginScreen = () => {
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" />
                         </Form.Group>
-                        <Container className="text-right">
+                        <div className="text-right">
                         <Button className="btn-bg-color-custom">Login</Button>
 
-                        </Container>
+                        </div>
 
                     </Form>
                 </Container>

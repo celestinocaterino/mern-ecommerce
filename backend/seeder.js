@@ -14,8 +14,6 @@ const destroyData= async()=>{
         await User.deleteMany()
         await Product.deleteMany()
         await Order.deleteMany()
-        
-        
         process.exit()
     }catch(error){
 
@@ -32,8 +30,10 @@ const importData=async ()=>{
         };
     })
     await Product.insertMany(addProducts);
+    process.exit();
+
 };
-destroyData();
+
 if(process.argv[2] == '-d'){
     destroyData();
 }else{
