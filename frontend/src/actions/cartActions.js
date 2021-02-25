@@ -3,9 +3,9 @@ import axios from 'axios';
 import config from './../config';
 
 export const addToCart=(id,quantity)=>async (dispatch,getState)=>{
-    const {data} =await axios.get(`${config.API_URL}/api/products`);
+    const {data} =await axios.get(`${config.API_URL}/api/products/${id}`);
     dispatch({
-        ADD_TO_CART,
+        type:ADD_TO_CART,
         payload:{
             product: data._id,
             name: data.name,

@@ -1,7 +1,19 @@
 import {Container, Form, Row, Col, Button} from 'react-bootstrap';
+import React,{useEffect} from 'react';
+import {Link} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {addToCart} from '../actions/cartActions.js'
 
-const CartScreen= ({match, location})=>{
-    console.log(location.search)
+const CartScreen= ({match, location, history})=>{
+    const productId=match.params.id;
+    const quantity= location.search ? Number(location.search.split('=')[1]) : 1;
+    const dispatch=useDispatch();
+    useEffect(() => {
+        if(productId){
+            dispatch(addToCart(productId,quantity))
+        }
+        
+    }, [])
     return(
         <>
             <Container>
