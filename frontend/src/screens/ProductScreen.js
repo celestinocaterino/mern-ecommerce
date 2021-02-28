@@ -57,7 +57,6 @@ const ProductScreen = ({history, match}) => {
                                                     <Row>
                                                         <Col>
                                                         {product.countInStock > 0  ?
-                                                            <ListGroup.Item>
                                                                 <Row>
                                                                     <Col>
                                                                     Quantity
@@ -73,7 +72,6 @@ const ProductScreen = ({history, match}) => {
                                                                     </Col>
                                                                 </Row>
 
-                                                            </ListGroup.Item>
                                                     
                                                         :
                                                             null
@@ -82,7 +80,12 @@ const ProductScreen = ({history, match}) => {
                                                         
                                                     </Row>
                                                 </Container>
+                                                {product.countInStock > 0  ?
+
                                                 <Button onClick={addToCart} className="btn-block btn-bg-color-custom">Add to cart</Button>
+
+                                                : null
+                                                }
                                             </Card.Text>
                                         </Card.Body>
                                     </Card>

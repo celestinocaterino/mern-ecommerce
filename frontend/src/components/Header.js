@@ -1,8 +1,12 @@
 import { Navbar, Nav, Dropdown } from 'react-bootstrap';
 import { BrowserView } from "react-device-detect";
 import { LinkContainer} from 'react-router-bootstrap';
+import {useSelector} from 'react-redux';
 
 const Header = () => {
+
+    const cart = useSelector(state => state.cart);
+    const {cartItems}= cart;
     return (
         <header>
             <BrowserView>
@@ -16,7 +20,7 @@ const Header = () => {
                                 <div className="d-none d-lg-block">
                                     <LinkContainer to="/cart">
                                         <Nav.Link className="position-relative d-inline-flex"><i className="fas fa-shopping-cart"></i>
-                                            <span class="cart-basket d-flex align-items-center justify-content-center">0</span>
+                                            <span className="cart-basket d-flex align-items-center justify-content-center">{cartItems.length}</span>
                                         </Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/login">

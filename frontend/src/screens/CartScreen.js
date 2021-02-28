@@ -3,10 +3,14 @@ import React,{useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {addToCart} from '../actions/cartActions.js'
+import CartItem from '../components/CartItem.js'
 
 const CartScreen= ({match, location, history})=>{
     const productId=match.params.id;
     const quantity= location.search ? Number(location.search.split('=')[1]) : 1;
+    const cart = useSelector(state => state.cart);
+    const {cartItems}= cart;
+
     const dispatch=useDispatch();
     useEffect(() => {
         if(productId){
@@ -39,44 +43,24 @@ const CartScreen= ({match, location, history})=>{
                                             </Col>
                                         </Row>
                                     </Container>
-                                <div>
-                                    <Container className="p-3">
-                                        <Row>
-                                            <Col>
-                                                <img class="w-50" src="https://via.placeholder.com/150"/>
-                                            </Col>
-                                            <Col className="">
-                                                TITOLO
-                                            </Col>
-                                            <Col className="">
-                                                <p>12</p>
-                                            </Col>
-                                            <Col className="">
-                                                <p>12</p>
-                                            </Col>
-                                            <Col className="">
-                                            <a>Remove</a>
-                                            </Col>
-                                        </Row>
-                                    </Container>
-
-
-                                 
-
-                                    
-                                </div>
+                                {
+                                    cartItems.map((item)=>{ 
+                                        return(
+                                            <CartItem key={item.product} item={item}></CartItem>
+                                       )                            
+                                    })
+                                }
                             </Container>
                         </Col>
-                        <Col sm={12} md={12} lg={6} xl={5}>
+                        <Col sm={12} md={12} lg={6} xl={5} className="mt-5">
                             <Container className="p-3 mb-5 mt-5 cart-div">
-                                
-                                <hr></hr>
+                                <h4>Subtotal for ({cartItems.length}) items</h4>
                                 <Row className="mb-3">
                                     <Col>
-                                        Total
+                                        Subtotal:
                                     </Col>
                                     <Col className="text-right mr-3">
-                                        23
+                                        $ {cartItems.reduce((acc,item)=>acc + item.quantity * item.price, 0).toFixed(2)}
                                     </Col>
                                 </Row>
                                 <Button className="btn-block btn-bg-color-custom">Go to checkout</Button>
