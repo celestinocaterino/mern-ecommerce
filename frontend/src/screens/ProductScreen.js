@@ -5,6 +5,7 @@ import { Rating } from '../components/Rating';
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from 'react-redux';
 import { productDetail } from './../actions/productActions';
+import {addToCart} from '../actions/cartActions';
 
 const ProductScreen = ({history, match}) => {
     const dispatch=useDispatch();
@@ -18,8 +19,9 @@ const ProductScreen = ({history, match}) => {
 
     const [quantity, setQuantity]=useState(1);
 
-    const addToCart=()=>{
-        history.push(`/cart/${match.params.id}?quantity=${quantity}`);
+    const addToCartHandler= async ()=>{
+        dispatch( addToCart(match.params.id,quantity));
+        history.push('/cart');
     }
 
     return (
@@ -51,38 +53,25 @@ const ProductScreen = ({history, match}) => {
                                         <Card.Body>
                                             <p>Price: {product.price}</p>
                                             <p>In stock: {product.countInStock ? 'In stock' : 'Out of stock'}</p>
-                                            <hr/>
                                             <Card.Text as="div">
-                                                <Container className="mb-2">
-                                                    <Row>
-                                                        <Col>
                                                         {product.countInStock > 0  ?
-                                                                <Row>
-                                                                    <Col>
-                                                                    Quantity
-                                                                    </Col>
-                                                                    <Col>
-                                                                    <Form.Control as='select' value={quantity} onChange={(e)=>setQuantity(e.target.value)}>
+                                                               
+                                                                    
+                                                                    <Form.Control as='select' className="mb-2" value={quantity} onChange={(e)=>setQuantity(e.target.value)}>
                                                                         {[...Array(product.countInStock).keys()].map(key=>(
                                                                             <option value={key+1}>{key+1}</option>
                                                                         )
 
                                                                         )}
                                                                     </Form.Control>
-                                                                    </Col>
-                                                                </Row>
-
-                                                    
+                                                              
                                                         :
                                                             null
                                                         }
-                                                        </Col>
-                                                        
-                                                    </Row>
-                                                </Container>
+                                                       
                                                 {product.countInStock > 0  ?
 
-                                                <Button onClick={addToCart} className="btn-block btn-bg-color-custom">Add to cart</Button>
+                                                <Button onClick={()=>{ addToCartHandler()}} className="btn-block btn-bg-color-custom">Add to cart</Button>
 
                                                 : null
                                                 }

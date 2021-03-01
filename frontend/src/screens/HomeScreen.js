@@ -15,23 +15,26 @@ const HomeScreen = () => {
     const {loading, error, products}=productsList;
 
     return (
-        <>
-            <Container>
-                            <h1>Latest products</h1>
-                            {loading ? <h2>Loading...</h2> : error ?<h3>{error}</h3> :
-
-                <Row>
-                    {
-                        products.map((product)=>
-                        <Col sm={12} md={6} lg={4} xl={3} key={product._id}>
-                            <Product  product={product}/>
-                        </Col>
-                        )
-                    }
-                </Row>}
-            </Container>
+        <Container>
+            <h1>Latest products</h1>
+            {
+                (loading)
+                
+                ? 
+                    <h2>Loading...</h2> : error ?<h3>{error}</h3>  
+                :
+                    <Row>
+                        {
+                            products.map(product=>
+                            <Col sm={12} md={6} lg={4} xl={3} key={product._id}>
+                                <Product  product={product}/>
+                            </Col>
+                            )
+                        }
+                    </Row>
+            }
+        </Container>
             
-        </>
     )
 }
 export default HomeScreen;

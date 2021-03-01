@@ -20,7 +20,13 @@ const Header = () => {
                                 <div className="d-none d-lg-block">
                                     <LinkContainer to="/cart">
                                         <Nav.Link className="position-relative d-inline-flex"><i className="fas fa-shopping-cart"></i>
-                                            <span className="cart-basket d-flex align-items-center justify-content-center">{cartItems.length}</span>
+                                            {
+                                                (cartItems.length>0) 
+                                                ?
+                                                <span className="cart-basket d-flex align-items-center justify-content-center">{cartItems.length}</span>
+                                                :                                   
+                                                null
+                                            }
                                         </Nav.Link>
                                     </LinkContainer>
                                     <LinkContainer to="/login">
