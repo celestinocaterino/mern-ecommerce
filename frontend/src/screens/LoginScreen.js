@@ -3,12 +3,18 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useState, useEffect} from 'react';
 import {login} from './../actions/userActions';
 
-const LoginScreen = () => {
+const LoginScreen = ({history}) => {
     const [email,setEmail]= useState('');
     const [password,setPassword]= useState('');
     const dispatch = useDispatch();
     const userLogin = useSelector(state => state.userInfo);
     const {loading, error, user} =userLogin;
+
+    useEffect(() => {
+        if(user){
+            history.push('/')
+        }
+    }, [])
 
     const submithandler= (e)=>{
         e.preventDefault();

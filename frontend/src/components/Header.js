@@ -1,12 +1,23 @@
-import { Navbar, Nav, Dropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { BrowserView } from "react-device-detect";
 import { LinkContainer} from 'react-router-bootstrap';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {logout} from './../actions/userActions';
 
-const Header = () => {
+const Header = ({history}) => {
 
     const cart = useSelector(state => state.cart);
     const {cartItems}= cart;
+    const userLogin = useSelector(state => state.userInfo);
+    const {loading, error, user} =userLogin;
+    const dispatch = useDispatch();
+
+    function logoutHandler(){
+        dispatch(logout());
+        console.log(history);
+        //history.push('/');
+    }
+
     return (
         <header>
             <BrowserView>
@@ -18,6 +29,7 @@ const Header = () => {
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto mr-5">
                                 <div className="d-none d-lg-block">
+                                    <div>
                                     <LinkContainer to="/cart">
                                         <Nav.Link className="position-relative d-inline-flex"><i className="fas fa-shopping-cart"></i>
                                             {
@@ -29,12 +41,32 @@ const Header = () => {
                                             }
                                         </Nav.Link>
                                     </LinkContainer>
-                                    <LinkContainer to="/login">
-                                        <Nav.Link className="d-inline-flex"><i className="fas fa-user"></i>
-                                        </Nav.Link>
-                                    </LinkContainer>
-                                </div>
+                                    
+                                    
+                                    {
+                                        (user) ? (
+                                            
+                                            <NavDropdown title={user.name} className="d-inline-flex" id="basic-nav-dropdown">
+                                            <LinkContainer to="/profile">
+                                                <NavDropdown.Item>Profile</NavDropdown.Item>
+                                            </LinkContainer>
 
+                                            
+                                            
+                                            <NavDropdown.Divider />
+                                            <NavDropdown.Item onClick={()=>{logoutHandler()}}>Logout</NavDropdown.Item>
+
+                                          </NavDropdown>)
+                                        :
+                                            (
+                                        <LinkContainer to="/login">
+                                            <Nav.Link className="d-inline-flex"><i className="fas fa-user"></i>
+                                            </Nav.Link>
+                                        </LinkContainer>)
+                                    }
+                                    
+                                </div>
+                                </div>
                                 <div className="d-block d-lg-none">
                                     <LinkContainer to="/cart">
                                         <Nav.Link>Cart <i className="fas fa-shopping-cart"></i>

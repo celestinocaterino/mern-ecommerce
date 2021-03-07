@@ -12,6 +12,7 @@ export const userAuth= asyncHandler(async (req,res)=>{
             isAdmin:user.isAdmin,
             name: user.name,
             email: user.email, 
+            name: user.name,
             token:generateToken(user._id)
         })
     }
